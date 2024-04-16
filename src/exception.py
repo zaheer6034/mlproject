@@ -1,5 +1,4 @@
 import sys
-import logging
 
 def error_message_details(error, error_detail: sys):
     # Custom exception handling. This will give us the error details
