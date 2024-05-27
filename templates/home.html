@@ -7,24 +7,30 @@
     <title>Student Exam Performance Indicator</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
         .container {
             max-width: 600px;
-            margin: auto;
+            margin: 40px auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        h1, h2 {
+        h1 {
             text-align: center;
+            color: #333333;
+        }
+
+        h2 {
+            text-align: center;
+            color: #555555;
+            margin-top: 0;
         }
 
         form {
@@ -34,28 +40,40 @@
         label {
             display: block;
             font-weight: bold;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            color: #555555;
         }
 
         select,
         input[type="number"],
         input[type="submit"] {
             width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
             box-sizing: border-box;
+            font-size: 16px;
         }
 
         input[type="submit"] {
             background-color: #007bff;
-            color: #fff;
+            color: #ffffff;
             cursor: pointer;
+            border: none;
+            font-size: 18px;
         }
 
         input[type="submit"]:hover {
             background-color: #0056b3;
+        }
+
+        select:required:invalid {
+            color: #999999;
+        }
+
+        option[value=""][disabled] {
+            display: none;
         }
     </style>
 </head>
@@ -67,16 +85,16 @@
         <form action="{{ url_for('predictDataPoint')}}" method="post">
             <h2>Student Exam Performance Prediction</h2>
             <div>
-                <label>Gender</label>
-                <select name="gender" required>
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender" required>
                     <option value="" disabled selected>Select your Gender</option>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                 </select>
             </div>
             <div>
-                <label>Race or Ethnicity</label>
-                <select name="ethnicity" required>
+                <label for="ethnicity">Race or Ethnicity</label>
+                <select id="ethnicity" name="ethnicity" required>
                     <option value="" disabled selected>Select Ethnicity</option>
                     <option value="group A">Group A</option>
                     <option value="group B">Group B</option>
@@ -86,8 +104,8 @@
                 </select>
             </div>
             <div>
-                <label>Parental Level of Education</label>
-                <select name="parental_level_of_education" required>
+                <label for="parental_education">Parental Level of Education</label>
+                <select id="parental_education" name="parental_level_of_education" required>
                     <option value="" disabled selected>Select Parent Education</option>
                     <option value="associate's degree">Associate's Degree</option>
                     <option value="bachelor's degree">Bachelor's Degree</option>
@@ -98,28 +116,28 @@
                 </select>
             </div>
             <div>
-                <label>Lunch Type</label>
-                <select name="lunch" required>
+                <label for="lunch">Lunch Type</label>
+                <select id="lunch" name="lunch" required>
                     <option value="" disabled selected>Select Lunch Type</option>
                     <option value="free/reduced">Free/Reduced</option>
                     <option value="standard">Standard</option>
                 </select>
             </div>
             <div>
-                <label>Test Preparation Course</label>
-                <select name="test_preparation_course" required>
+                <label for="test_prep">Test Preparation Course</label>
+                <select id="test_prep" name="test_preparation_course" required>
                     <option value="" disabled selected>Select Test Course</option>
                     <option value="none">None</option>
                     <option value="completed">Completed</option>
                 </select>
             </div>
             <div>
-                <label>Writing Score out of 100</label>
-                <input type="number" name="writing_score" placeholder="Enter your Writing score" min="0" max="100" required>
+                <label for="writing_score">Writing Score out of 100</label>
+                <input id="writing_score" type="number" name="writing_score" placeholder="Enter your Writing score" min="0" max="100" required>
             </div>
             <div>
-                <label>Reading Score out of 100</label>
-                <input type="number" name="reading_score" placeholder="Enter your Reading score" min="0" max="100" required>
+                <label for="reading_score">Reading Score out of 100</label>
+                <input id="reading_score" type="number" name="reading_score" placeholder="Enter your Reading score" min="0" max="100" required>
             </div>
             <div>
                 <input type="submit" value="Predict your Maths Score">
